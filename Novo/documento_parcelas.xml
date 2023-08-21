@@ -1,0 +1,53 @@
+<xsd:schema targetNamespace="m8" xmlns:schema="m8" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sqltypes="http://schemas.microsoft.com/sqlserver/2004/sqltypes" elementFormDefault="qualified">
+  <xsd:import namespace="http://schemas.microsoft.com/sqlserver/2004/sqltypes" schemaLocation="http://schemas.microsoft.com/sqlserver/2004/sqltypes/sqltypes.xsd" />
+  <xsd:element name="documento_parcelas">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="id" type="xsd:int" />
+        <xsd:element name="valor">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="2" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="vencimento" type="xsd:dateTime" />
+        <xsd:element name="descricao" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="excluido" type="xsd:boolean" />
+        <xsd:element name="condicao_pagamento_nome">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="condicao_pagamento_meio_pagamento" type="xsd:int" minOccurs="0" />
+        <xsd:element name="numero_item" type="xsd:int" />
+        <xsd:element name="tipo_documento" type="xsd:int" />
+        <xsd:element name="condicao_pagamento_nome_parcela" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="documento_fiscal_id" type="xsd:int" />
+        <xsd:element name="condicao_pagamento_meio_pagamento_parcela" type="xsd:int" minOccurs="0" />
+        <xsd:element name="observacao" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

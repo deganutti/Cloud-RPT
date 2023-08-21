@@ -1,0 +1,14 @@
+select top 1 * from nome_view for xml auto, xmlschema ('m8'), elements
+
+
+base="sqltypes:decimal" base="xsd:decimal"
+
+base="sqltypes:nvarchar" base="xsd:string"
+
+base="sqltypes:varchar" base="xsd:string"
+
+type="sqltypes:datetime" type="xsd:dateTime"
+
+type="sqltypes:int" type="xsd:int"
+
+type="sqltypes:bit" type="xsd:boolean"
