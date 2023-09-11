@@ -1,0 +1,555 @@
+<xsd:schema targetNamespace="m8" xmlns:schema="m8" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sqltypes="http://schemas.microsoft.com/sqlserver/2004/sqltypes" elementFormDefault="qualified">
+  <xsd:import namespace="http://schemas.microsoft.com/sqlserver/2004/sqltypes" schemaLocation="http://schemas.microsoft.com/sqlserver/2004/sqltypes/sqltypes.xsd" />
+  <xsd:element name="documento">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="id" type="xsd:int" />
+        <xsd:element name="ativo" type="xsd:int" />
+        <xsd:element name="descricao">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="200" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="fechamento" type="xsd:int" />
+        <xsd:element name="pessoa_id" type="xsd:int" />
+        <xsd:element name="operacao_fiscal_id" type="xsd:int" />
+        <xsd:element name="dia_fechamento" type="xsd:int" minOccurs="0" />
+        <xsd:element name="data_lancamento" type="xsd:dateTime" />
+        <xsd:element name="data_inicio" type="xsd:dateTime" />
+        <xsd:element name="data_termino" type="xsd:dateTime" />
+        <xsd:element name="data_assinatura" type="xsd:dateTime" />
+        <xsd:element name="objeto">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" />
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_id" type="xsd:int" />
+        <xsd:element name="empresa_grupo_id" type="xsd:int" />
+        <xsd:element name="empresa_grupo_nome">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="centro_custo_id" type="xsd:int" />
+        <xsd:element name="valor_estimado">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="2" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="status" type="xsd:int" />
+        <xsd:element name="status_aprovacao" type="xsd:int" />
+        <xsd:element name="observacoes" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" />
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="contrato_origem_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="conta_contabil_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="operacao_financeira_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="produto_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="empresa_razao_social">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_fantasia">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_cpf_cnpj">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="50" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_inscricao_estadual">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_razao_social">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_fantasia">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_cpf_cnpj">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="50" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_inscricao_estadual">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="excluido" type="xsd:boolean" />
+        <xsd:element name="produto_nome" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="produto_apelido" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="indice_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="condicao_pagamento_id" type="xsd:int" />
+        <xsd:element name="tipo_contrato_id" type="xsd:int" />
+        <xsd:element name="condicao_pagamento_nome">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="condicao_pagamento_abreviatura" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="3" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="tipo_contrato_nome">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="indice_nome">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="conta_contabil_nome" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="conta_contabil_classificacao" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="centro_custo_nome" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="centro_custo_classificacao" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="numero_interno">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="50" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="operacoes_fiscais_nome">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="qualidade" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="300" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="especificacao" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="300" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="quantidade" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="300" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="quantidade_contrato" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="7" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="embalagem" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="300" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="frete_tipo" type="xsd:int" minOccurs="0" />
+        <xsd:element name="local_entrega_retidade" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="300" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="prazo_entrega_retidade" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="300" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="impostos" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="300" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="comissao_tipo" type="xsd:int" minOccurs="0" />
+        <xsd:element name="preco_tonelada" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="7" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="percentual_comissao" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="7" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="valor_comissao" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="7" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="representante_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="representante_razao_social" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="representante_fantasia" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="unidade_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="unidade_nome" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_logradouro" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_cep" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="8" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_numero" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" />
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_letra" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="8" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_complemento" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="150" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_caixa_postal" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_municipio" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_estado" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_uf" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="10" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_bairro" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_tipo_endereco" type="xsd:int" minOccurs="0" />
+        <xsd:element name="empresa_bairro_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="empresa_municipio_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="empresa_estado_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="pessoa_logradouro" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_cep" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="8" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_numero" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" />
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_letra" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="8" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_complemento" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="150" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_caixa_postal" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_municipio" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_estado" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_uf" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="10" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_bairro" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_tipo_endereco" type="xsd:int" minOccurs="0" />
+        <xsd:element name="pessoa_bairro_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="pessoa_municipio_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="pessoa_estado_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="vendedor_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="vendedor_logradouro" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="vendedor_cep" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="8" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="vendedor_numero" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" />
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="vendedor_letra" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="8" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="vendedor_complemento" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="150" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="vendedor_caixa_postal" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="vendedor_municipio" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="vendedor_estado" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="vendedor_uf" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="10" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="vendedor_bairro" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="vendedor_tipo_endereco" type="xsd:int" minOccurs="0" />
+        <xsd:element name="vendedor_bairro_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="vendedor_municipio_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="vendedor_estado_id" type="xsd:int" minOccurs="0" />
+        <xsd:element name="vendedor_razao_social" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="vendedor_fantasia" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="vendedor_cpf_cnpj" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="50" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="vendedor_inscricao_estadual" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema> 
