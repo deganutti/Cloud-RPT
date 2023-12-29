@@ -1,6 +1,6 @@
 <xsd:schema targetNamespace="m8" xmlns:schema="m8" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sqltypes="http://schemas.microsoft.com/sqlserver/2004/sqltypes" elementFormDefault="qualified">
   <xsd:import namespace="http://schemas.microsoft.com/sqlserver/2004/sqltypes" schemaLocation="http://schemas.microsoft.com/sqlserver/2004/sqltypes/sqltypes.xsd" />
-  <xsd:element name="documento">
+  <xsd:element name="rel_documentos_fiscais">
     <xsd:complexType>
       <xsd:sequence>
         <xsd:element name="id" type="xsd:int" />

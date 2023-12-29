@@ -1,0 +1,1437 @@
+<xsd:schema targetNamespace="m8" xmlns:schema="m8" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sqltypes="http://schemas.microsoft.com/sqlserver/2004/sqltypes" elementFormDefault="qualified">
+  <xsd:import namespace="http://schemas.microsoft.com/sqlserver/2004/sqltypes" schemaLocation="http://schemas.microsoft.com/sqlserver/2004/sqltypes/sqltypes.xsd" />
+  <xsd:element name="rel_documentos_fiscais">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="id" type="sqltypes:int" />
+        <xsd:element name="nr_documento" type="sqltypes:int" />
+        <xsd:element name="tipo_documento" type="sqltypes:int" />
+        <xsd:element name="status" type="sqltypes:int" />
+        <xsd:element name="documento" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="nr_documento_nfe" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="200" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="data_emissao" type="sqltypes:datetime" />
+        <xsd:element name="chave_nfe" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="44" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="valor_acrescimo">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="2" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="valor_desconto">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="2" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="valor_frete">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="2" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="valor_frete_pagar">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="2" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="valor_seguro">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="2" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_id" type="sqltypes:int" />
+        <xsd:element name="empresa_id" type="sqltypes:int" />
+        <xsd:element name="transportador_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="frete_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="sintegra_id" type="sqltypes:int" />
+        <xsd:element name="condicao_pagamento_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="serie_documento_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="especie_volume" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="60" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="marca_volume" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="60" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="observacao" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" />
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="peso_bruto">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="3" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="peso_liquido">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="3" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_razao_social">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_fantasia">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_cpf_cnpj">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="50" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_razao_social" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_fantasia" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_cpf_cnpj" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="50" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="transportador_razao_social" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="transportador_fantasia" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="transportador_cpf_cnpj" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="50" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_logradouro" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_cep" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="8" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_numero" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_letra" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="8" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_complemento" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="150" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_caixa_postal" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_bairro" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_municipio" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_estado" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_uf" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="10" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_tipo_endereco" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="pessoa_bairro_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="pessoa_municipio_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="pessoa_estado_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="pessoa_telefone" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_celular" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_email" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="400" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_inscricao_municipal" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_inscricao_estadual">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="pessoa_rg" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="30" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="prazo_entrega" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="impostos" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_logradouro" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_cep" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="8" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_numero" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_letra" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="8" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_complemento" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="150" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_caixa_postal" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_municipio" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_estado" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_uf" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="10" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_bairro" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_tipo_endereco" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="empresa_bairro_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="empresa_municipio_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="empresa_estado_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="empresa_telefone" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_inscricao_estadual" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="20" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_email" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="400" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="empresa_site" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="200" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="data_inicio" type="sqltypes:datetime" minOccurs="0" />
+        <xsd:element name="data_fim" type="sqltypes:datetime" minOccurs="0" />
+        <xsd:element name="contato" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="75" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="contato_telefone" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="75" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="valor_total_geral">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="2" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="valor_total_geral_produtos">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="2" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="valor_total_geral_servicos">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="2" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="valor_total_geral_desconto_itens">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="2" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="valor_total_geral_desconto_produtos">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="2" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="valor_total_geral_desconto_servicos">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:decimal">
+              <xsd:totalDigits value="18" />
+              <xsd:fractionDigits value="2" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="valor_total_geral_desconto" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:decimal">
+              <xsd:totalDigits value="19" />
+              <xsd:fractionDigits value="2" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="funcionario_razao_social" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="funcionario_fantasia" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="funcionario_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="atendente_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="atendente_razao_social" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="atendente_fantasia" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="serie_nf" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="3" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="sub_serie" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="3" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="especie_documento" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="10" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="especie_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="moeda_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="condicoes_pagamentos_nome" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="moedas_nome" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="especie_financeiro_nome" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="tipo_compra_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="tipo_compra_nome" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="data_cadastro" type="sqltypes:datetime" />
+        <xsd:element name="data_lancamento" type="sqltypes:datetime" minOccurs="0" />
+        <xsd:element name="usuario_atualizacao_id" type="sqltypes:int" />
+        <xsd:element name="usuario_cadastro_id" type="sqltypes:int" />
+        <xsd:element name="usuario_atualizacao_nome" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="usuario_cadastro_nome" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="500" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="contrato_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="codigo_especificador_cest">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:varchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="1" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="veiculo_placa" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="15" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="veiculo_ano_fabricacao" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="veiculo_ano_modelo" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="veiculo_cor" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" />
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="veiculo_combustivel" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="veiculo_modelo" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="200" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="veiculo_chassi" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="50" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="veiculo_renavam" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="15" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="id_origem_dados" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="outros_documentos_operacao_id" type="sqltypes:int" minOccurs="0" />
+        <xsd:element name="outros_documentos_operacao_nome" minOccurs="0">
+          <xsd:simpleType>
+            <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth">
+              <xsd:maxLength value="130" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="outros_documentos_operacao_tipo" type="sqltypes:int" minOccurs="0" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
+<rel_documentos_fiscais xmlns="m8">
+  <id>1</id>
+  <nr_documento>1</nr_documento>
+  <tipo_documento>1</tipo_documento>
+  <status>1</status>
+  <documento>4454</documento>
+  <data_emissao>2020-10-16T00:00:00</data_emissao>
+  <valor_acrescimo>0.00</valor_acrescimo>
+  <valor_desconto>0.00</valor_desconto>
+  <valor_frete>0.00</valor_frete>
+  <valor_frete_pagar>0.00</valor_frete_pagar>
+  <valor_seguro>0.00</valor_seguro>
+  <pessoa_id>5000</pessoa_id>
+  <empresa_id>1</empresa_id>
+  <frete_id>0</frete_id>
+  <sintegra_id>1</sintegra_id>
+  <condicao_pagamento_id>1</condicao_pagamento_id>
+  <peso_bruto>0.000</peso_bruto>
+  <peso_liquido>0.000</peso_liquido>
+  <pessoa_razao_social>SABOR DO TEXAS INDUSTRIA E COMERCIO DE PRODUTOS ALIMENTICIOS LTDA - TESTE2</pessoa_razao_social>
+  <pessoa_fantasia>O SABOR DO TEXAS</pessoa_fantasia>
+  <pessoa_cpf_cnpj>09274243000192</pessoa_cpf_cnpj>
+  <empresa_razao_social>(RAZAOSOCIAL) - RICARDO - INCLUSAO - API</empresa_razao_social>
+  <empresa_fantasia>12136067000137 - (FANTASIA) - RICARDO - INCLUSAO - API</empresa_fantasia>
+  <empresa_cpf_cnpj>00526351000130</empresa_cpf_cnpj>
+  <pessoa_logradouro>RUA FLAMBOYANT</pessoa_logradouro>
+  <pessoa_cep>87023550</pessoa_cep>
+  <pessoa_numero>14</pessoa_numero>
+  <pessoa_complemento>LOJA 04 E 05</pessoa_complemento>
+  <pessoa_bairro>PARQUE PALMEIRAS</pessoa_bairro>
+  <pessoa_municipio>MARINGA</pessoa_municipio>
+  <pessoa_estado>PARANA</pessoa_estado>
+  <pessoa_uf>PR</pessoa_uf>
+  <pessoa_tipo_endereco>1</pessoa_tipo_endereco>
+  <pessoa_bairro_id>337</pessoa_bairro_id>
+  <pessoa_municipio_id>3397</pessoa_municipio_id>
+  <pessoa_estado_id>337</pessoa_estado_id>
+  <pessoa_telefone>4432631015</pessoa_telefone>
+  <pessoa_email>marceloaugustoteo@hotmail.com</pessoa_email>
+  <pessoa_inscricao_municipal>ISENTO</pessoa_inscricao_municipal>
+  <pessoa_inscricao_estadual>ISENTO</pessoa_inscricao_estadual>
+  <empresa_logradouro>AVENIDA DUQUE DE CAXIAS</empresa_logradouro>
+  <empresa_cep>87020025</empresa_cep>
+  <empresa_numero>882</empresa_numero>
+  <empresa_complemento>EDIF NEW TOWER TORRE 01 SALA 110</empresa_complemento>
+  <empresa_municipio>MARINGA</empresa_municipio>
+  <empresa_estado>PARANA</empresa_estado>
+  <empresa_uf>PR</empresa_uf>
+  <empresa_bairro>Zona 07</empresa_bairro>
+  <empresa_tipo_endereco>1</empresa_tipo_endereco>
+  <empresa_bairro_id>338</empresa_bairro_id>
+  <empresa_municipio_id>3397</empresa_municipio_id>
+  <empresa_estado_id>338</empresa_estado_id>
+  <empresa_telefone>4430282922</empresa_telefone>
+  <empresa_inscricao_estadual>7012117587</empresa_inscricao_estadual>
+  <empresa_email>marcelo@pchelpsistemas.com.br</empresa_email>
+  <empresa_site>www.supremocloud.com.br</empresa_site>
+  <data_inicio>2020-10-16T10:52:13.497</data_inicio>
+  <valor_total_geral>0.00</valor_total_geral>
+  <valor_total_geral_produtos>0.00</valor_total_geral_produtos>
+  <valor_total_geral_servicos>0.00</valor_total_geral_servicos>
+  <valor_total_geral_desconto_itens>0.00</valor_total_geral_desconto_itens>
+  <valor_total_geral_desconto_produtos>0.00</valor_total_geral_desconto_produtos>
+  <valor_total_geral_desconto_servicos>0.00</valor_total_geral_desconto_servicos>
+  <valor_total_geral_desconto>0.00</valor_total_geral_desconto>
+  <serie_nf>2</serie_nf>
+  <especie_documento>NF</especie_documento>
+  <especie_id>1</especie_id>
+  <condicoes_pagamentos_nome>A VISTA</condicoes_pagamentos_nome>
+  <especie_financeiro_nome>NOTA ELETRONICA	</especie_financeiro_nome>
+  <tipo_compra_id>1</tipo_compra_id>
+  <tipo_compra_nome>COMPRAS DE FORNECEDORES</tipo_compra_nome>
+  <data_cadastro>2020-10-16T10:52:14.090</data_cadastro>
+  <data_lancamento>2023-03-23T00:00:00</data_lancamento>
+  <usuario_atualizacao_id>9</usuario_atualizacao_id>
+  <usuario_cadastro_id>1</usuario_cadastro_id>
+  <usuario_atualizacao_nome>MARCELO AUGUSTO</usuario_atualizacao_nome>
+  <usuario_cadastro_nome>Administrador</usuario_cadastro_nome>
+  <codigo_especificador_cest></codigo_especificador_cest>
+</rel_documentos_fiscais>
+<rel_documentos_fiscais xmlns="m8">
+  <id>2</id>
+  <nr_documento>1</nr_documento>
+  <tipo_documento>2</tipo_documento>
+  <status>2</status>
+  <documento>1</documento>
+  <data_emissao>2020-10-20T00:00:00</data_emissao>
+  <valor_acrescimo>0.00</valor_acrescimo>
+  <valor_desconto>20.00</valor_desconto>
+  <valor_frete>0.00</valor_frete>
+  <valor_frete_pagar>0.00</valor_frete_pagar>
+  <valor_seguro>0.00</valor_seguro>
+  <pessoa_id>5002</pessoa_id>
+  <empresa_id>1</empresa_id>
+  <frete_id>1</frete_id>
+  <sintegra_id>99</sintegra_id>
+  <condicao_pagamento_id>5</condicao_pagamento_id>
+  <serie_documento_id>2</serie_documento_id>
+  <observacao>O.S. 1 TESTE DE ORÇAMENTO  REFERENTE SERVIÇO REALIZADO NO VEICULO: PLACA PRO-0752 Km: 0  . DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL; NÃO GERA DIREITO A CRÉDITO FISCAL DE IPI. Trib aprox R$: 21,53 Federal, 0,00 Estadual e 0,00 Municipal (Fonte: IBPT/FECOMERCIO SC).</observacao>
+  <peso_bruto>0.000</peso_bruto>
+  <peso_liquido>0.000</peso_liquido>
+  <pessoa_razao_social>ESTEFANY MASCALHUSK</pessoa_razao_social>
+  <pessoa_fantasia>06619190995 - ESTEFANY MASCALHUSK</pessoa_fantasia>
+  <pessoa_cpf_cnpj>06619190995</pessoa_cpf_cnpj>
+  <empresa_razao_social>(RAZAOSOCIAL) - RICARDO - INCLUSAO - API</empresa_razao_social>
+  <empresa_fantasia>12136067000137 - (FANTASIA) - RICARDO - INCLUSAO - API</empresa_fantasia>
+  <empresa_cpf_cnpj>00526351000130</empresa_cpf_cnpj>
+  <pessoa_logradouro>Rua Caracas - até 1083/1084</pessoa_logradouro>
+  <pessoa_cep>87040010</pessoa_cep>
+  <pessoa_numero>906</pessoa_numero>
+  <pessoa_bairro>Vila Morangueira</pessoa_bairro>
+  <pessoa_municipio>MARINGA</pessoa_municipio>
+  <pessoa_estado>PARANA</pessoa_estado>
+  <pessoa_uf>PR</pessoa_uf>
+  <pessoa_tipo_endereco>1</pessoa_tipo_endereco>
+  <pessoa_bairro_id>339</pessoa_bairro_id>
+  <pessoa_municipio_id>3397</pessoa_municipio_id>
+  <pessoa_estado_id>339</pessoa_estado_id>
+  <pessoa_telefone>44999401595</pessoa_telefone>
+  <pessoa_email>fernando@pchelpsistemas.com.br</pessoa_email>
+  <pessoa_inscricao_municipal>ISENTO</pessoa_inscricao_municipal>
+  <pessoa_inscricao_estadual>ISENTO</pessoa_inscricao_estadual>
+  <empresa_logradouro>AVENIDA DUQUE DE CAXIAS</empresa_logradouro>
+  <empresa_cep>87020025</empresa_cep>
+  <empresa_numero>882</empresa_numero>
+  <empresa_complemento>EDIF NEW TOWER TORRE 01 SALA 110</empresa_complemento>
+  <empresa_municipio>MARINGA</empresa_municipio>
+  <empresa_estado>PARANA</empresa_estado>
+  <empresa_uf>PR</empresa_uf>
+  <empresa_bairro>Zona 07</empresa_bairro>
+  <empresa_tipo_endereco>1</empresa_tipo_endereco>
+  <empresa_bairro_id>338</empresa_bairro_id>
+  <empresa_municipio_id>3397</empresa_municipio_id>
+  <empresa_estado_id>338</empresa_estado_id>
+  <empresa_telefone>4430282922</empresa_telefone>
+  <empresa_inscricao_estadual>7012117587</empresa_inscricao_estadual>
+  <empresa_email>marcelo@pchelpsistemas.com.br</empresa_email>
+  <empresa_site>www.supremocloud.com.br</empresa_site>
+  <data_inicio>2020-10-20T09:01:16.770</data_inicio>
+  <valor_total_geral>230.00</valor_total_geral>
+  <valor_total_geral_produtos>150.00</valor_total_geral_produtos>
+  <valor_total_geral_servicos>100.00</valor_total_geral_servicos>
+  <valor_total_geral_desconto_itens>0.00</valor_total_geral_desconto_itens>
+  <valor_total_geral_desconto_produtos>0.00</valor_total_geral_desconto_produtos>
+  <valor_total_geral_desconto_servicos>0.00</valor_total_geral_desconto_servicos>
+  <valor_total_geral_desconto>20.00</valor_total_geral_desconto>
+  <funcionario_razao_social>(RAZAOSOCIAL) - RICARDO - INCLUSAO - API</funcionario_razao_social>
+  <funcionario_fantasia>12136067000137 - (FANTASIA) - RICARDO - INCLUSAO - API</funcionario_fantasia>
+  <funcionario_id>1</funcionario_id>
+  <condicoes_pagamentos_nome>BOLETO 30/60/90</condicoes_pagamentos_nome>
+  <data_cadastro>2020-10-20T09:01:17.067</data_cadastro>
+  <data_lancamento>2020-10-20T00:00:00</data_lancamento>
+  <usuario_atualizacao_id>13</usuario_atualizacao_id>
+  <usuario_cadastro_id>13</usuario_cadastro_id>
+  <usuario_atualizacao_nome>Suporte</usuario_atualizacao_nome>
+  <usuario_cadastro_nome>Suporte</usuario_cadastro_nome>
+  <codigo_especificador_cest></codigo_especificador_cest>
+  <id_origem_dados>1</id_origem_dados>
+  <outros_documentos_operacao_id>1</outros_documentos_operacao_id>
+  <outros_documentos_operacao_nome>VENDA DE MERCADORIAS</outros_documentos_operacao_nome>
+  <outros_documentos_operacao_tipo>99</outros_documentos_operacao_tipo>
+</rel_documentos_fiscais>
+<rel_documentos_fiscais xmlns="m8">
+  <id>3</id>
+  <nr_documento>2</nr_documento>
+  <tipo_documento>2</tipo_documento>
+  <status>2</status>
+  <documento>2</documento>
+  <data_emissao>2020-10-20T00:00:00</data_emissao>
+  <valor_acrescimo>0.00</valor_acrescimo>
+  <valor_desconto>0.00</valor_desconto>
+  <valor_frete>0.00</valor_frete>
+  <valor_frete_pagar>0.00</valor_frete_pagar>
+  <valor_seguro>0.00</valor_seguro>
+  <pessoa_id>5002</pessoa_id>
+  <empresa_id>1</empresa_id>
+  <frete_id>0</frete_id>
+  <sintegra_id>99</sintegra_id>
+  <condicao_pagamento_id>1</condicao_pagamento_id>
+  <serie_documento_id>2</serie_documento_id>
+  <observacao>Pedido: 4 - Vendedor: 5004 GUSTAVO TOLDO DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL; NÃO GERA DIREITO A CRÉDITO FISCAL DE IPI. Trib aprox R$: 3,83 Federal, 3,40 Estadual e 0,00 Municipal (Fonte: IBPT/FECOMERCIO SC).</observacao>
+  <peso_bruto>0.000</peso_bruto>
+  <peso_liquido>0.000</peso_liquido>
+  <pessoa_razao_social>ESTEFANY MASCALHUSK</pessoa_razao_social>
+  <pessoa_fantasia>06619190995 - ESTEFANY MASCALHUSK</pessoa_fantasia>
+  <pessoa_cpf_cnpj>06619190995</pessoa_cpf_cnpj>
+  <empresa_razao_social>(RAZAOSOCIAL) - RICARDO - INCLUSAO - API</empresa_razao_social>
+  <empresa_fantasia>12136067000137 - (FANTASIA) - RICARDO - INCLUSAO - API</empresa_fantasia>
+  <empresa_cpf_cnpj>00526351000130</empresa_cpf_cnpj>
+  <pessoa_logradouro>Rua Caracas - até 1083/1084</pessoa_logradouro>
+  <pessoa_cep>87040010</pessoa_cep>
+  <pessoa_numero>906</pessoa_numero>
+  <pessoa_bairro>Vila Morangueira</pessoa_bairro>
+  <pessoa_municipio>MARINGA</pessoa_municipio>
+  <pessoa_estado>PARANA</pessoa_estado>
+  <pessoa_uf>PR</pessoa_uf>
+  <pessoa_tipo_endereco>1</pessoa_tipo_endereco>
+  <pessoa_bairro_id>339</pessoa_bairro_id>
+  <pessoa_municipio_id>3397</pessoa_municipio_id>
+  <pessoa_estado_id>339</pessoa_estado_id>
+  <pessoa_telefone>44999401595</pessoa_telefone>
+  <pessoa_email>fernando@pchelpsistemas.com.br</pessoa_email>
+  <pessoa_inscricao_municipal>ISENTO</pessoa_inscricao_municipal>
+  <pessoa_inscricao_estadual>ISENTO</pessoa_inscricao_estadual>
+  <empresa_logradouro>AVENIDA DUQUE DE CAXIAS</empresa_logradouro>
+  <empresa_cep>87020025</empresa_cep>
+  <empresa_numero>882</empresa_numero>
+  <empresa_complemento>EDIF NEW TOWER TORRE 01 SALA 110</empresa_complemento>
+  <empresa_municipio>MARINGA</empresa_municipio>
+  <empresa_estado>PARANA</empresa_estado>
+  <empresa_uf>PR</empresa_uf>
+  <empresa_bairro>Zona 07</empresa_bairro>
+  <empresa_tipo_endereco>1</empresa_tipo_endereco>
+  <empresa_bairro_id>338</empresa_bairro_id>
+  <empresa_municipio_id>3397</empresa_municipio_id>
+  <empresa_estado_id>338</empresa_estado_id>
+  <empresa_telefone>4430282922</empresa_telefone>
+  <empresa_inscricao_estadual>7012117587</empresa_inscricao_estadual>
+  <empresa_email>marcelo@pchelpsistemas.com.br</empresa_email>
+  <empresa_site>www.supremocloud.com.br</empresa_site>
+  <data_inicio>2020-10-20T09:34:43.297</data_inicio>
+  <valor_total_geral>65.00</valor_total_geral>
+  <valor_total_geral_produtos>65.00</valor_total_geral_produtos>
+  <valor_total_geral_servicos>0.00</valor_total_geral_servicos>
+  <valor_total_geral_desconto_itens>0.00</valor_total_geral_desconto_itens>
+  <valor_total_geral_desconto_produtos>0.00</valor_total_geral_desconto_produtos>
+  <valor_total_geral_desconto_servicos>0.00</valor_total_geral_desconto_servicos>
+  <valor_total_geral_desconto>0.00</valor_total_geral_desconto>
+  <moeda_id>1</moeda_id>
+  <condicoes_pagamentos_nome>A VISTA</condicoes_pagamentos_nome>
+  <moedas_nome>Real</moedas_nome>
+  <data_cadastro>2020-10-20T09:34:43.593</data_cadastro>
+  <data_lancamento>2020-10-20T00:00:00</data_lancamento>
+  <usuario_atualizacao_id>13</usuario_atualizacao_id>
+  <usuario_cadastro_id>13</usuario_cadastro_id>
+  <usuario_atualizacao_nome>Suporte</usuario_atualizacao_nome>
+  <usuario_cadastro_nome>Suporte</usuario_cadastro_nome>
+  <codigo_especificador_cest></codigo_especificador_cest>
+  <id_origem_dados>4</id_origem_dados>
+  <outros_documentos_operacao_id>1</outros_documentos_operacao_id>
+  <outros_documentos_operacao_nome>VENDA DE MERCADORIAS</outros_documentos_operacao_nome>
+  <outros_documentos_operacao_tipo>99</outros_documentos_operacao_tipo>
+</rel_documentos_fiscais>
+<rel_documentos_fiscais xmlns="m8">
+  <id>4</id>
+  <nr_documento>2</nr_documento>
+  <tipo_documento>1</tipo_documento>
+  <status>2</status>
+  <documento>123123</documento>
+  <data_emissao>2020-10-23T00:00:00</data_emissao>
+  <valor_acrescimo>0.00</valor_acrescimo>
+  <valor_desconto>0.00</valor_desconto>
+  <valor_frete>0.00</valor_frete>
+  <valor_frete_pagar>0.00</valor_frete_pagar>
+  <valor_seguro>0.00</valor_seguro>
+  <pessoa_id>5000</pessoa_id>
+  <empresa_id>1</empresa_id>
+  <frete_id>0</frete_id>
+  <sintegra_id>99</sintegra_id>
+  <condicao_pagamento_id>1</condicao_pagamento_id>
+  <peso_bruto>0.000</peso_bruto>
+  <peso_liquido>0.000</peso_liquido>
+  <pessoa_razao_social>SABOR DO TEXAS INDUSTRIA E COMERCIO DE PRODUTOS ALIMENTICIOS LTDA - TESTE2</pessoa_razao_social>
+  <pessoa_fantasia>O SABOR DO TEXAS</pessoa_fantasia>
+  <pessoa_cpf_cnpj>09274243000192</pessoa_cpf_cnpj>
+  <empresa_razao_social>(RAZAOSOCIAL) - RICARDO - INCLUSAO - API</empresa_razao_social>
+  <empresa_fantasia>12136067000137 - (FANTASIA) - RICARDO - INCLUSAO - API</empresa_fantasia>
+  <empresa_cpf_cnpj>00526351000130</empresa_cpf_cnpj>
+  <pessoa_logradouro>RUA FLAMBOYANT</pessoa_logradouro>
+  <pessoa_cep>87023550</pessoa_cep>
+  <pessoa_numero>14</pessoa_numero>
+  <pessoa_complemento>LOJA 04 E 05</pessoa_complemento>
+  <pessoa_bairro>PARQUE PALMEIRAS</pessoa_bairro>
+  <pessoa_municipio>MARINGA</pessoa_municipio>
+  <pessoa_estado>PARANA</pessoa_estado>
+  <pessoa_uf>PR</pessoa_uf>
+  <pessoa_tipo_endereco>1</pessoa_tipo_endereco>
+  <pessoa_bairro_id>337</pessoa_bairro_id>
+  <pessoa_municipio_id>3397</pessoa_municipio_id>
+  <pessoa_estado_id>337</pessoa_estado_id>
+  <pessoa_telefone>4432631015</pessoa_telefone>
+  <pessoa_email>marceloaugustoteo@hotmail.com</pessoa_email>
+  <pessoa_inscricao_municipal>ISENTO</pessoa_inscricao_municipal>
+  <pessoa_inscricao_estadual>ISENTO</pessoa_inscricao_estadual>
+  <empresa_logradouro>AVENIDA DUQUE DE CAXIAS</empresa_logradouro>
+  <empresa_cep>87020025</empresa_cep>
+  <empresa_numero>882</empresa_numero>
+  <empresa_complemento>EDIF NEW TOWER TORRE 01 SALA 110</empresa_complemento>
+  <empresa_municipio>MARINGA</empresa_municipio>
+  <empresa_estado>PARANA</empresa_estado>
+  <empresa_uf>PR</empresa_uf>
+  <empresa_bairro>Zona 07</empresa_bairro>
+  <empresa_tipo_endereco>1</empresa_tipo_endereco>
+  <empresa_bairro_id>338</empresa_bairro_id>
+  <empresa_municipio_id>3397</empresa_municipio_id>
+  <empresa_estado_id>338</empresa_estado_id>
+  <empresa_telefone>4430282922</empresa_telefone>
+  <empresa_inscricao_estadual>7012117587</empresa_inscricao_estadual>
+  <empresa_email>marcelo@pchelpsistemas.com.br</empresa_email>
+  <empresa_site>www.supremocloud.com.br</empresa_site>
+  <data_inicio>2020-10-23T10:36:58.297</data_inicio>
+  <valor_total_geral>52.50</valor_total_geral>
+  <valor_total_geral_produtos>50.00</valor_total_geral_produtos>
+  <valor_total_geral_servicos>0.00</valor_total_geral_servicos>
+  <valor_total_geral_desconto_itens>0.00</valor_total_geral_desconto_itens>
+  <valor_total_geral_desconto_produtos>0.00</valor_total_geral_desconto_produtos>
+  <valor_total_geral_desconto_servicos>0.00</valor_total_geral_desconto_servicos>
+  <valor_total_geral_desconto>0.00</valor_total_geral_desconto>
+  <serie_nf>1</serie_nf>
+  <especie_documento>123</especie_documento>
+  <especie_id>4</especie_id>
+  <condicoes_pagamentos_nome>A VISTA</condicoes_pagamentos_nome>
+  <especie_financeiro_nome>FATURA</especie_financeiro_nome>
+  <tipo_compra_id>1</tipo_compra_id>
+  <tipo_compra_nome>COMPRAS DE FORNECEDORES</tipo_compra_nome>
+  <data_cadastro>2020-10-23T10:36:58.920</data_cadastro>
+  <data_lancamento>2020-10-23T00:00:00</data_lancamento>
+  <usuario_atualizacao_id>13</usuario_atualizacao_id>
+  <usuario_cadastro_id>13</usuario_cadastro_id>
+  <usuario_atualizacao_nome>Suporte</usuario_atualizacao_nome>
+  <usuario_cadastro_nome>Suporte</usuario_cadastro_nome>
+  <codigo_especificador_cest></codigo_especificador_cest>
+</rel_documentos_fiscais>
+<rel_documentos_fiscais xmlns="m8">
+  <id>5</id>
+  <nr_documento>3</nr_documento>
+  <tipo_documento>2</tipo_documento>
+  <status>3</status>
+  <documento>3</documento>
+  <data_emissao>2020-10-27T00:00:00</data_emissao>
+  <valor_acrescimo>0.00</valor_acrescimo>
+  <valor_desconto>0.00</valor_desconto>
+  <valor_frete>0.00</valor_frete>
+  <valor_frete_pagar>0.00</valor_frete_pagar>
+  <valor_seguro>0.00</valor_seguro>
+  <pessoa_id>5006</pessoa_id>
+  <empresa_id>1</empresa_id>
+  <frete_id>9</frete_id>
+  <sintegra_id>99</sintegra_id>
+  <condicao_pagamento_id>5</condicao_pagamento_id>
+  <serie_documento_id>2</serie_documento_id>
+  <observacao>Pedido: 13 - Vendedor: 5004 GUSTAVO TOLDO DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL; NÃO GERA DIREITO A CRÉDITO FISCAL DE IPI. Trib aprox R$: 23,57 Federal, 0,00 Estadual e 0,00 Municipal (Fonte: IBPT/FECOMERCIO SC).</observacao>
+  <peso_bruto>0.000</peso_bruto>
+  <peso_liquido>0.000</peso_liquido>
+  <pessoa_razao_social>GISELE SILVA MOTA</pessoa_razao_social>
+  <pessoa_fantasia>03746652901 - GISELE SILVA MOTA</pessoa_fantasia>
+  <pessoa_cpf_cnpj>03746652901</pessoa_cpf_cnpj>
+  <empresa_razao_social>(RAZAOSOCIAL) - RICARDO - INCLUSAO - API</empresa_razao_social>
+  <empresa_fantasia>12136067000137 - (FANTASIA) - RICARDO - INCLUSAO - API</empresa_fantasia>
+  <empresa_cpf_cnpj>00526351000130</empresa_cpf_cnpj>
+  <pessoa_logradouro>CENTRO</pessoa_logradouro>
+  <pessoa_cep>87160000</pessoa_cep>
+  <pessoa_numero>545</pessoa_numero>
+  <pessoa_complemento>-</pessoa_complemento>
+  <pessoa_bairro>CENTRO</pessoa_bairro>
+  <pessoa_municipio>MANDAGUACU</pessoa_municipio>
+  <pessoa_estado>PARANA</pessoa_estado>
+  <pessoa_uf>PR</pessoa_uf>
+  <pessoa_tipo_endereco>1</pessoa_tipo_endereco>
+  <pessoa_bairro_id>341</pessoa_bairro_id>
+  <pessoa_municipio_id>3385</pessoa_municipio_id>
+  <pessoa_estado_id>341</pessoa_estado_id>
+  <pessoa_inscricao_municipal>ISENTO</pessoa_inscricao_municipal>
+  <pessoa_inscricao_estadual>ISENTO</pessoa_inscricao_estadual>
+  <empresa_logradouro>AVENIDA DUQUE DE CAXIAS</empresa_logradouro>
+  <empresa_cep>87020025</empresa_cep>
+  <empresa_numero>882</empresa_numero>
+  <empresa_complemento>EDIF NEW TOWER TORRE 01 SALA 110</empresa_complemento>
+  <empresa_municipio>MARINGA</empresa_municipio>
+  <empresa_estado>PARANA</empresa_estado>
+  <empresa_uf>PR</empresa_uf>
+  <empresa_bairro>Zona 07</empresa_bairro>
+  <empresa_tipo_endereco>1</empresa_tipo_endereco>
+  <empresa_bairro_id>338</empresa_bairro_id>
+  <empresa_municipio_id>3397</empresa_municipio_id>
+  <empresa_estado_id>338</empresa_estado_id>
+  <empresa_telefone>4430282922</empresa_telefone>
+  <empresa_inscricao_estadual>7012117587</empresa_inscricao_estadual>
+  <empresa_email>marcelo@pchelpsistemas.com.br</empresa_email>
+  <empresa_site>www.supremocloud.com.br</empresa_site>
+  <data_inicio>2020-10-27T09:16:24.687</data_inicio>
+  <data_fim>2020-10-27T09:25:08.043</data_fim>
+  <valor_total_geral>355.00</valor_total_geral>
+  <valor_total_geral_produtos>355.00</valor_total_geral_produtos>
+  <valor_total_geral_servicos>0.00</valor_total_geral_servicos>
+  <valor_total_geral_desconto_itens>0.00</valor_total_geral_desconto_itens>
+  <valor_total_geral_desconto_produtos>0.00</valor_total_geral_desconto_produtos>
+  <valor_total_geral_desconto_servicos>0.00</valor_total_geral_desconto_servicos>
+  <valor_total_geral_desconto>0.00</valor_total_geral_desconto>
+  <moeda_id>1</moeda_id>
+  <condicoes_pagamentos_nome>BOLETO 30/60/90</condicoes_pagamentos_nome>
+  <moedas_nome>Real</moedas_nome>
+  <data_cadastro>2020-10-27T09:16:24.983</data_cadastro>
+  <data_lancamento>2020-10-27T00:00:00</data_lancamento>
+  <usuario_atualizacao_id>13</usuario_atualizacao_id>
+  <usuario_cadastro_id>13</usuario_cadastro_id>
+  <usuario_atualizacao_nome>Suporte</usuario_atualizacao_nome>
+  <usuario_cadastro_nome>Suporte</usuario_cadastro_nome>
+  <codigo_especificador_cest></codigo_especificador_cest>
+  <id_origem_dados>13</id_origem_dados>
+  <outros_documentos_operacao_id>1</outros_documentos_operacao_id>
+  <outros_documentos_operacao_nome>VENDA DE MERCADORIAS</outros_documentos_operacao_nome>
+  <outros_documentos_operacao_tipo>99</outros_documentos_operacao_tipo>
+</rel_documentos_fiscais>
+<rel_documentos_fiscais xmlns="m8">
+  <id>6</id>
+  <nr_documento>3</nr_documento>
+  <tipo_documento>1</tipo_documento>
+  <status>2</status>
+  <documento>1052</documento>
+  <data_emissao>2020-10-27T00:00:00</data_emissao>
+  <valor_acrescimo>0.00</valor_acrescimo>
+  <valor_desconto>0.00</valor_desconto>
+  <valor_frete>0.00</valor_frete>
+  <valor_frete_pagar>0.00</valor_frete_pagar>
+  <valor_seguro>0.00</valor_seguro>
+  <pessoa_id>5000</pessoa_id>
+  <empresa_id>1</empresa_id>
+  <frete_id>9</frete_id>
+  <sintegra_id>1</sintegra_id>
+  <condicao_pagamento_id>1</condicao_pagamento_id>
+  <peso_bruto>0.000</peso_bruto>
+  <peso_liquido>0.000</peso_liquido>
+  <pessoa_razao_social>SABOR DO TEXAS INDUSTRIA E COMERCIO DE PRODUTOS ALIMENTICIOS LTDA - TESTE2</pessoa_razao_social>
+  <pessoa_fantasia>O SABOR DO TEXAS</pessoa_fantasia>
+  <pessoa_cpf_cnpj>09274243000192</pessoa_cpf_cnpj>
+  <empresa_razao_social>(RAZAOSOCIAL) - RICARDO - INCLUSAO - API</empresa_razao_social>
+  <empresa_fantasia>12136067000137 - (FANTASIA) - RICARDO - INCLUSAO - API</empresa_fantasia>
+  <empresa_cpf_cnpj>00526351000130</empresa_cpf_cnpj>
+  <pessoa_logradouro>RUA FLAMBOYANT</pessoa_logradouro>
+  <pessoa_cep>87023550</pessoa_cep>
+  <pessoa_numero>14</pessoa_numero>
+  <pessoa_complemento>LOJA 04 E 05</pessoa_complemento>
+  <pessoa_bairro>PARQUE PALMEIRAS</pessoa_bairro>
+  <pessoa_municipio>MARINGA</pessoa_municipio>
+  <pessoa_estado>PARANA</pessoa_estado>
+  <pessoa_uf>PR</pessoa_uf>
+  <pessoa_tipo_endereco>1</pessoa_tipo_endereco>
+  <pessoa_bairro_id>337</pessoa_bairro_id>
+  <pessoa_municipio_id>3397</pessoa_municipio_id>
+  <pessoa_estado_id>337</pessoa_estado_id>
+  <pessoa_telefone>4432631015</pessoa_telefone>
+  <pessoa_email>marceloaugustoteo@hotmail.com</pessoa_email>
+  <pessoa_inscricao_municipal>ISENTO</pessoa_inscricao_municipal>
+  <pessoa_inscricao_estadual>ISENTO</pessoa_inscricao_estadual>
+  <empresa_logradouro>AVENIDA DUQUE DE CAXIAS</empresa_logradouro>
+  <empresa_cep>87020025</empresa_cep>
+  <empresa_numero>882</empresa_numero>
+  <empresa_complemento>EDIF NEW TOWER TORRE 01 SALA 110</empresa_complemento>
+  <empresa_municipio>MARINGA</empresa_municipio>
+  <empresa_estado>PARANA</empresa_estado>
+  <empresa_uf>PR</empresa_uf>
+  <empresa_bairro>Zona 07</empresa_bairro>
+  <empresa_tipo_endereco>1</empresa_tipo_endereco>
+  <empresa_bairro_id>338</empresa_bairro_id>
+  <empresa_municipio_id>3397</empresa_municipio_id>
+  <empresa_estado_id>338</empresa_estado_id>
+  <empresa_telefone>4430282922</empresa_telefone>
+  <empresa_inscricao_estadual>7012117587</empresa_inscricao_estadual>
+  <empresa_email>marcelo@pchelpsistemas.com.br</empresa_email>
+  <empresa_site>www.supremocloud.com.br</empresa_site>
+  <data_inicio>2020-10-27T11:08:55.510</data_inicio>
+  <valor_total_geral>17875.00</valor_total_geral>
+  <valor_total_geral_produtos>17500.00</valor_total_geral_produtos>
+  <valor_total_geral_servicos>0.00</valor_total_geral_servicos>
+  <valor_total_geral_desconto_itens>0.00</valor_total_geral_desconto_itens>
+  <valor_total_geral_desconto_produtos>0.00</valor_total_geral_desconto_produtos>
+  <valor_total_geral_desconto_servicos>0.00</valor_total_geral_desconto_servicos>
+  <valor_total_geral_desconto>0.00</valor_total_geral_desconto>
+  <serie_nf>1</serie_nf>
+  <especie_documento>DM</especie_documento>
+  <especie_id>1</especie_id>
+  <condicoes_pagamentos_nome>A VISTA</condicoes_pagamentos_nome>
+  <especie_financeiro_nome>NOTA ELETRONICA	</especie_financeiro_nome>
+  <tipo_compra_id>1</tipo_compra_id>
+  <tipo_compra_nome>COMPRAS DE FORNECEDORES</tipo_compra_nome>
+  <data_cadastro>2020-10-27T11:08:56.120</data_cadastro>
+  <data_lancamento>2020-10-27T00:00:00</data_lancamento>
+  <usuario_atualizacao_id>10</usuario_atualizacao_id>
+  <usuario_cadastro_id>8</usuario_cadastro_id>
+  <usuario_atualizacao_nome>ESTEFANY MASCALHUSK</usuario_atualizacao_nome>
+  <usuario_cadastro_nome>GISELE</usuario_cadastro_nome>
+  <codigo_especificador_cest></codigo_especificador_cest>
+</rel_documentos_fiscais>
+<rel_documentos_fiscais xmlns="m8">
+  <id>7</id>
+  <nr_documento>0</nr_documento>
+  <tipo_documento>2</tipo_documento>
+  <status>1</status>
+  <data_emissao>2020-10-30T00:00:00</data_emissao>
+  <valor_acrescimo>0.00</valor_acrescimo>
+  <valor_desconto>0.00</valor_desconto>
+  <valor_frete>0.00</valor_frete>
+  <valor_frete_pagar>0.00</valor_frete_pagar>
+  <valor_seguro>0.00</valor_seguro>
+  <pessoa_id>5002</pessoa_id>
+  <empresa_id>1</empresa_id>
+  <frete_id>9</frete_id>
+  <sintegra_id>99</sintegra_id>
+  <condicao_pagamento_id>6</condicao_pagamento_id>
+  <serie_documento_id>2</serie_documento_id>
+  <peso_bruto>0.000</peso_bruto>
+  <peso_liquido>0.000</peso_liquido>
+  <pessoa_razao_social>ESTEFANY MASCALHUSK</pessoa_razao_social>
+  <pessoa_fantasia>06619190995 - ESTEFANY MASCALHUSK</pessoa_fantasia>
+  <pessoa_cpf_cnpj>06619190995</pessoa_cpf_cnpj>
+  <empresa_razao_social>(RAZAOSOCIAL) - RICARDO - INCLUSAO - API</empresa_razao_social>
+  <empresa_fantasia>12136067000137 - (FANTASIA) - RICARDO - INCLUSAO - API</empresa_fantasia>
+  <empresa_cpf_cnpj>00526351000130</empresa_cpf_cnpj>
+  <pessoa_logradouro>Rua Caracas - até 1083/1084</pessoa_logradouro>
+  <pessoa_cep>87040010</pessoa_cep>
+  <pessoa_numero>906</pessoa_numero>
+  <pessoa_bairro>Vila Morangueira</pessoa_bairro>
+  <pessoa_municipio>MARINGA</pessoa_municipio>
+  <pessoa_estado>PARANA</pessoa_estado>
+  <pessoa_uf>PR</pessoa_uf>
+  <pessoa_tipo_endereco>1</pessoa_tipo_endereco>
+  <pessoa_bairro_id>339</pessoa_bairro_id>
+  <pessoa_municipio_id>3397</pessoa_municipio_id>
+  <pessoa_estado_id>339</pessoa_estado_id>
+  <pessoa_telefone>44999401595</pessoa_telefone>
+  <pessoa_email>fernando@pchelpsistemas.com.br</pessoa_email>
+  <pessoa_inscricao_municipal>ISENTO</pessoa_inscricao_municipal>
+  <pessoa_inscricao_estadual>ISENTO</pessoa_inscricao_estadual>
+  <empresa_logradouro>AVENIDA DUQUE DE CAXIAS</empresa_logradouro>
+  <empresa_cep>87020025</empresa_cep>
+  <empresa_numero>882</empresa_numero>
+  <empresa_complemento>EDIF NEW TOWER TORRE 01 SALA 110</empresa_complemento>
+  <empresa_municipio>MARINGA</empresa_municipio>
+  <empresa_estado>PARANA</empresa_estado>
+  <empresa_uf>PR</empresa_uf>
+  <empresa_bairro>Zona 07</empresa_bairro>
+  <empresa_tipo_endereco>1</empresa_tipo_endereco>
+  <empresa_bairro_id>338</empresa_bairro_id>
+  <empresa_municipio_id>3397</empresa_municipio_id>
+  <empresa_estado_id>338</empresa_estado_id>
+  <empresa_telefone>4430282922</empresa_telefone>
+  <empresa_inscricao_estadual>7012117587</empresa_inscricao_estadual>
+  <empresa_email>marcelo@pchelpsistemas.com.br</empresa_email>
+  <empresa_site>www.supremocloud.com.br</empresa_site>
+  <data_inicio>2020-10-30T08:57:10</data_inicio>
+  <valor_total_geral>433.00</valor_total_geral>
+  <valor_total_geral_produtos>0.00</valor_total_geral_produtos>
+  <valor_total_geral_servicos>433.00</valor_total_geral_servicos>
+  <valor_total_geral_desconto_itens>0.00</valor_total_geral_desconto_itens>
+  <valor_total_geral_desconto_produtos>0.00</valor_total_geral_desconto_produtos>
+  <valor_total_geral_desconto_servicos>0.00</valor_total_geral_desconto_servicos>
+  <valor_total_geral_desconto>0.00</valor_total_geral_desconto>
+  <condicoes_pagamentos_nome>DINHEIRO</condicoes_pagamentos_nome>
+  <data_cadastro>2020-10-30T08:57:11</data_cadastro>
+  <data_lancamento>2020-10-30T00:00:00</data_lancamento>
+  <usuario_atualizacao_id>1</usuario_atualizacao_id>
+  <usuario_cadastro_id>1</usuario_cadastro_id>
+  <usuario_atualizacao_nome>Administrador</usuario_atualizacao_nome>
+  <usuario_cadastro_nome>Administrador</usuario_cadastro_nome>
+  <codigo_especificador_cest></codigo_especificador_cest>
+  <id_origem_dados>2</id_origem_dados>
+  <outros_documentos_operacao_id>1</outros_documentos_operacao_id>
+  <outros_documentos_operacao_nome>VENDA DE MERCADORIAS</outros_documentos_operacao_nome>
+  <outros_documentos_operacao_tipo>99</outros_documentos_operacao_tipo>
+</rel_documentos_fiscais>
+<rel_documentos_fiscais xmlns="m8">
+  <id>8</id>
+  <nr_documento>4</nr_documento>
+  <tipo_documento>1</tipo_documento>
+  <status>2</status>
+  <documento>1254</documento>
+  <data_emissao>2020-11-05T00:00:00</data_emissao>
+  <chave_nfe>31201019525260000109550010001060151100071138</chave_nfe>
+  <valor_acrescimo>0.00</valor_acrescimo>
+  <valor_desconto>0.00</valor_desconto>
+  <valor_frete>0.00</valor_frete>
+  <valor_frete_pagar>0.00</valor_frete_pagar>
+  <valor_seguro>0.00</valor_seguro>
+  <pessoa_id>5009</pessoa_id>
+  <empresa_id>1</empresa_id>
+  <frete_id>3</frete_id>
+  <sintegra_id>1</sintegra_id>
+  <condicao_pagamento_id>1</condicao_pagamento_id>
+  <peso_bruto>0.000</peso_bruto>
+  <peso_liquido>0.000</peso_liquido>
+  <pessoa_razao_social>MONDELEZ BRASIL LTDA</pessoa_razao_social>
+  <pessoa_fantasia>MONDELEZ BRASIL</pessoa_fantasia>
+  <pessoa_cpf_cnpj>33033028000184</pessoa_cpf_cnpj>
+  <empresa_razao_social>(RAZAOSOCIAL) - RICARDO - INCLUSAO - API</empresa_razao_social>
+  <empresa_fantasia>12136067000137 - (FANTASIA) - RICARDO - INCLUSAO - API</empresa_fantasia>
+  <empresa_cpf_cnpj>00526351000130</empresa_cpf_cnpj>
+  <pessoa_logradouro>AVENIDA PRESIDENTE KENNEDY</pessoa_logradouro>
+  <pessoa_cep>80610010</pessoa_cep>
+  <pessoa_numero>2511</pessoa_numero>
+  <pessoa_complemento>PARTE</pessoa_complemento>
+  <pessoa_bairro>ÁGUA VERDE</pessoa_bairro>
+  <pessoa_municipio>CURITIBA</pessoa_municipio>
+  <pessoa_estado>PARANA</pessoa_estado>
+  <pessoa_uf>PR</pessoa_uf>
+  <pessoa_tipo_endereco>1</pessoa_tipo_endereco>
+  <pessoa_bairro_id>343</pessoa_bairro_id>
+  <pessoa_municipio_id>3282</pessoa_municipio_id>
+  <pessoa_estado_id>343</pessoa_estado_id>
+  <pessoa_email>analise@pchelpsistemas.com.br</pessoa_email>
+  <pessoa_inscricao_municipal>ISENTO</pessoa_inscricao_municipal>
+  <pessoa_inscricao_estadual>90256576-05</pessoa_inscricao_estadual>
+  <empresa_logradouro>AVENIDA DUQUE DE CAXIAS</empresa_logradouro>
+  <empresa_cep>87020025</empresa_cep>
+  <empresa_numero>882</empresa_numero>
+  <empresa_complemento>EDIF NEW TOWER TORRE 01 SALA 110</empresa_complemento>
+  <empresa_municipio>MARINGA</empresa_municipio>
+  <empresa_estado>PARANA</empresa_estado>
+  <empresa_uf>PR</empresa_uf>
+  <empresa_bairro>Zona 07</empresa_bairro>
+  <empresa_tipo_endereco>1</empresa_tipo_endereco>
+  <empresa_bairro_id>338</empresa_bairro_id>
+  <empresa_municipio_id>3397</empresa_municipio_id>
+  <empresa_estado_id>338</empresa_estado_id>
+  <empresa_telefone>4430282922</empresa_telefone>
+  <empresa_inscricao_estadual>7012117587</empresa_inscricao_estadual>
+  <empresa_email>marcelo@pchelpsistemas.com.br</empresa_email>
+  <empresa_site>www.supremocloud.com.br</empresa_site>
+  <data_inicio>2020-11-05T15:58:19.720</data_inicio>
+  <valor_total_geral>500.00</valor_total_geral>
+  <valor_total_geral_produtos>500.00</valor_total_geral_produtos>
+  <valor_total_geral_servicos>0.00</valor_total_geral_servicos>
+  <valor_total_geral_desconto_itens>0.00</valor_total_geral_desconto_itens>
+  <valor_total_geral_desconto_produtos>0.00</valor_total_geral_desconto_produtos>
+  <valor_total_geral_desconto_servicos>0.00</valor_total_geral_desconto_servicos>
+  <valor_total_geral_desconto>0.00</valor_total_geral_desconto>
+  <serie_nf>1</serie_nf>
+  <sub_serie>1</sub_serie>
+  <especie_documento>NF</especie_documento>
+  <especie_id>1</especie_id>
+  <condicoes_pagamentos_nome>A VISTA</condicoes_pagamentos_nome>
+  <especie_financeiro_nome>NOTA ELETRONICA	</especie_financeiro_nome>
+  <tipo_compra_id>1</tipo_compra_id>
+  <tipo_compra_nome>COMPRAS DE FORNECEDORES</tipo_compra_nome>
+  <data_cadastro>2020-11-05T15:58:20.423</data_cadastro>
+  <data_lancamento>2020-11-05T00:00:00</data_lancamento>
+  <usuario_atualizacao_id>1</usuario_atualizacao_id>
+  <usuario_cadastro_id>10</usuario_cadastro_id>
+  <usuario_atualizacao_nome>Administrador</usuario_atualizacao_nome>
+  <usuario_cadastro_nome>ESTEFANY MASCALHUSK</usuario_cadastro_nome>
+  <codigo_especificador_cest></codigo_especificador_cest>
+</rel_documentos_fiscais>
+<rel_documentos_fiscais xmlns="m8">
+  <id>15</id>
+  <nr_documento>5</nr_documento>
+  <tipo_documento>1</tipo_documento>
+  <status>2</status>
+  <documento>68073</documento>
+  <data_emissao>2020-11-11T00:00:00</data_emissao>
+  <chave_nfe>50201120711653000196550020000680731055706493</chave_nfe>
+  <valor_acrescimo>0.00</valor_acrescimo>
+  <valor_desconto>0.00</valor_desconto>
+  <valor_frete>0.00</valor_frete>
+  <valor_frete_pagar>0.00</valor_frete_pagar>
+  <valor_seguro>0.00</valor_seguro>
+  <pessoa_id>5022</pessoa_id>
+  <empresa_id>1</empresa_id>
+  <frete_id>1</frete_id>
+  <sintegra_id>55</sintegra_id>
+  <condicao_pagamento_id>5</condicao_pagamento_id>
+  <peso_bruto>0.000</peso_bruto>
+  <peso_liquido>0.000</peso_liquido>
+  <pessoa_razao_social>WORLD IMPORTADOS - MS</pessoa_razao_social>
+  <pessoa_fantasia>WORLD IMPORTADOS - MS</pessoa_fantasia>
+  <pessoa_cpf_cnpj>20711653000196</pessoa_cpf_cnpj>
+  <empresa_razao_social>(RAZAOSOCIAL) - RICARDO - INCLUSAO - API</empresa_razao_social>
+  <empresa_fantasia>12136067000137 - (FANTASIA) - RICARDO - INCLUSAO - API</empresa_fantasia>
+  <empresa_cpf_cnpj>00526351000130</empresa_cpf_cnpj>
+  <pessoa_logradouro>AVENIDA MARCELINO PIRES 3600</pessoa_logradouro>
+  <pessoa_cep>79830903</pessoa_cep>
+  <pessoa_numero>2198</pessoa_numero>
+  <pessoa_bairro>JARDIM CARAMURU</pessoa_bairro>
+  <pessoa_municipio>DOURADOS</pessoa_municipio>
+  <pessoa_estado>MATO GROSSO DO SUL</pessoa_estado>
+  <pessoa_uf>MS</pessoa_uf>
+  <pessoa_tipo_endereco>1</pessoa_tipo_endereco>
+  <pessoa_bairro_id>355</pessoa_bairro_id>
+  <pessoa_municipio_id>2231</pessoa_municipio_id>
+  <pessoa_estado_id>355</pessoa_estado_id>
+  <pessoa_telefone>4432264344</pessoa_telefone>
+  <pessoa_inscricao_municipal>ISENTO</pessoa_inscricao_municipal>
+  <pessoa_inscricao_estadual>283986271</pessoa_inscricao_estadual>
+  <empresa_logradouro>AVENIDA DUQUE DE CAXIAS</empresa_logradouro>
+  <empresa_cep>87020025</empresa_cep>
+  <empresa_numero>882</empresa_numero>
+  <empresa_complemento>EDIF NEW TOWER TORRE 01 SALA 110</empresa_complemento>
+  <empresa_municipio>MARINGA</empresa_municipio>
+  <empresa_estado>PARANA</empresa_estado>
+  <empresa_uf>PR</empresa_uf>
+  <empresa_bairro>Zona 07</empresa_bairro>
+  <empresa_tipo_endereco>1</empresa_tipo_endereco>
+  <empresa_bairro_id>338</empresa_bairro_id>
+  <empresa_municipio_id>3397</empresa_municipio_id>
+  <empresa_estado_id>338</empresa_estado_id>
+  <empresa_telefone>4430282922</empresa_telefone>
+  <empresa_inscricao_estadual>7012117587</empresa_inscricao_estadual>
+  <empresa_email>marcelo@pchelpsistemas.com.br</empresa_email>
+  <empresa_site>www.supremocloud.com.br</empresa_site>
+  <data_inicio>2020-11-11T15:41:23</data_inicio>
+  <valor_total_geral>25.00</valor_total_geral>
+  <valor_total_geral_produtos>25.00</valor_total_geral_produtos>
+  <valor_total_geral_servicos>0.00</valor_total_geral_servicos>
+  <valor_total_geral_desconto_itens>0.00</valor_total_geral_desconto_itens>
+  <valor_total_geral_desconto_produtos>0.00</valor_total_geral_desconto_produtos>
+  <valor_total_geral_desconto_servicos>0.00</valor_total_geral_desconto_servicos>
+  <valor_total_geral_desconto>0.00</valor_total_geral_desconto>
+  <serie_nf>1</serie_nf>
+  <especie_documento>NF</especie_documento>
+  <especie_id>1</especie_id>
+  <condicoes_pagamentos_nome>BOLETO 30/60/90</condicoes_pagamentos_nome>
+  <especie_financeiro_nome>NOTA ELETRONICA	</especie_financeiro_nome>
+  <tipo_compra_id>1</tipo_compra_id>
+  <tipo_compra_nome>COMPRAS DE FORNECEDORES</tipo_compra_nome>
+  <data_cadastro>2020-11-11T15:41:23</data_cadastro>
+  <data_lancamento>2020-11-11T00:00:00</data_lancamento>
+  <usuario_atualizacao_id>6</usuario_atualizacao_id>
+  <usuario_cadastro_id>6</usuario_cadastro_id>
+  <usuario_atualizacao_nome>FERNANDO FERRARI</usuario_atualizacao_nome>
+  <usuario_cadastro_nome>FERNANDO FERRARI</usuario_cadastro_nome>
+  <codigo_especificador_cest></codigo_especificador_cest>
+  <id_origem_dados>25</id_origem_dados>
+</rel_documentos_fiscais>
+<rel_documentos_fiscais xmlns="m8">
+  <id>17</id>
+  <nr_documento>6</nr_documento>
+  <tipo_documento>1</tipo_documento>
+  <status>2</status>
+  <documento>2078386</documento>
+  <data_emissao>2020-11-01T00:00:00</data_emissao>
+  <chave_nfe>41201105330384000124550010020783861721036600</chave_nfe>
+  <valor_acrescimo>0.00</valor_acrescimo>
+  <valor_desconto>0.00</valor_desconto>
+  <valor_frete>0.00</valor_frete>
+  <valor_frete_pagar>0.00</valor_frete_pagar>
+  <valor_seguro>0.00</valor_seguro>
+  <pessoa_id>5015</pessoa_id>
+  <empresa_id>1</empresa_id>
+  <frete_id>9</frete_id>
+  <sintegra_id>55</sintegra_id>
+  <condicao_pagamento_id>1</condicao_pagamento_id>
+  <observacao>NFe ref. Parcela 94 com Venc. em 27/11/2020 \n \nNao Incidencia de ICMS-Art. 3o Inciso I, alinea B do Decreto 7871/2017 RICMS/PR \nNao Incidencia de ICMS-Art. 6o Inciso I do RICMS/SC.\nProduto abrangido pela Imunidade Tributaria conforme Acordao de Repercussao Geral DJe-195 do STF de 31/08/2017.. \n| Trib. aprox. R$: 8,84 Federal e  0,00 Estadual Fonte: IBPT/empresometro.com.br D26078</observacao>
+  <peso_bruto>0.000</peso_bruto>
+  <peso_liquido>0.000</peso_liquido>
+  <pessoa_razao_social>Econet Editora Empresarial Ltda</pessoa_razao_social>
+  <pessoa_fantasia>Econet Editora Empresarial Ltda</pessoa_fantasia>
+  <pessoa_cpf_cnpj>05330384000124</pessoa_cpf_cnpj>
+  <empresa_razao_social>(RAZAOSOCIAL) - RICARDO - INCLUSAO - API</empresa_razao_social>
+  <empresa_fantasia>12136067000137 - (FANTASIA) - RICARDO - INCLUSAO - API</empresa_fantasia>
+  <empresa_cpf_cnpj>00526351000130</empresa_cpf_cnpj>
+  <pessoa_logradouro>Rua Gago Coutinho</pessoa_logradouro>
+  <pessoa_cep>82510230</pessoa_cep>
+  <pessoa_numero>541</pessoa_numero>
+  <pessoa_letra></pessoa_letra>
+  <pessoa_complemento></pessoa_complemento>
+  <pessoa_caixa_postal></pessoa_caixa_postal>
+  <pessoa_bairro>BACACHERI</pessoa_bairro>
+  <pessoa_municipio>CURITIBA</pessoa_municipio>
+  <pessoa_estado>PARANA</pessoa_estado>
+  <pessoa_uf>PR</pessoa_uf>
+  <pessoa_tipo_endereco>1</pessoa_tipo_endereco>
+  <pessoa_bairro_id>349</pessoa_bairro_id>
+  <pessoa_municipio_id>3282</pessoa_municipio_id>
+  <pessoa_estado_id>349</pessoa_estado_id>
+  <pessoa_telefone>4130168006</pessoa_telefone>
+  <pessoa_inscricao_municipal>ISENTO</pessoa_inscricao_municipal>
+  <pessoa_inscricao_estadual>9030903088</pessoa_inscricao_estadual>
+  <empresa_logradouro>AVENIDA DUQUE DE CAXIAS</empresa_logradouro>
+  <empresa_cep>87020025</empresa_cep>
+  <empresa_numero>882</empresa_numero>
+  <empresa_complemento>EDIF NEW TOWER TORRE 01 SALA 110</empresa_complemento>
+  <empresa_municipio>MARINGA</empresa_municipio>
+  <empresa_estado>PARANA</empresa_estado>
+  <empresa_uf>PR</empresa_uf>
+  <empresa_bairro>Zona 07</empresa_bairro>
+  <empresa_tipo_endereco>1</empresa_tipo_endereco>
+  <empresa_bairro_id>338</empresa_bairro_id>
+  <empresa_municipio_id>3397</empresa_municipio_id>
+  <empresa_estado_id>338</empresa_estado_id>
+  <empresa_telefone>4430282922</empresa_telefone>
+  <empresa_inscricao_estadual>7012117587</empresa_inscricao_estadual>
+  <empresa_email>marcelo@pchelpsistemas.com.br</empresa_email>
+  <empresa_site>www.supremocloud.com.br</empresa_site>
+  <data_inicio>2020-11-13T08:54:22</data_inicio>
+  <valor_total_geral>210.36</valor_total_geral>
+  <valor_total_geral_produtos>210.36</valor_total_geral_produtos>
+  <valor_total_geral_servicos>0.00</valor_total_geral_servicos>
+  <valor_total_geral_desconto_itens>0.00</valor_total_geral_desconto_itens>
+  <valor_total_geral_desconto_produtos>0.00</valor_total_geral_desconto_produtos>
+  <valor_total_geral_desconto_servicos>0.00</valor_total_geral_desconto_servicos>
+  <valor_total_geral_desconto>0.00</valor_total_geral_desconto>
+  <serie_nf>1</serie_nf>
+  <especie_documento>NFe</especie_documento>
+  <especie_id>2</especie_id>
+  <condicoes_pagamentos_nome>A VISTA</condicoes_pagamentos_nome>
+  <especie_financeiro_nome>DUPLICATA MERCANTIL</especie_financeiro_nome>
+  <tipo_compra_id>1</tipo_compra_id>
+  <tipo_compra_nome>COMPRAS DE FORNECEDORES</tipo_compra_nome>
+  <data_cadastro>2020-11-13T08:54:22</data_cadastro>
+  <data_lancamento>2020-11-13T00:00:00</data_lancamento>
+  <usuario_atualizacao_id>1</usuario_atualizacao_id>
+  <usuario_cadastro_id>1</usuario_cadastro_id>
+  <usuario_atualizacao_nome>Administrador</usuario_atualizacao_nome>
+  <usuario_cadastro_nome>Administrador</usuario_cadastro_nome>
+  <codigo_especificador_cest></codigo_especificador_cest>
+</rel_documentos_fiscais>

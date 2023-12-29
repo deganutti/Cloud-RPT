@@ -1,0 +1,150 @@
+Function ToWords2 (Valor as Number) as String
+    if Valor <= 0 or Valor > 999999999.99 then
+        Exit Function
+    end if 
+
+
+'Variáveis
+Dim vlsValor     as String
+Dim vlsParte     as String
+Dim vlsFinal     as String
+
+Dim vliContador  as Number
+Dim vliTamanho   as Number
+
+'Arrays
+Dim alsGrupo()   as String
+Redim alsGrupo(4)
+
+Dim alsTexto()   as String
+Redim alsTexto(4)
+
+'Matrizes de extensos (Parciais)
+Dim mlsUnidade() as String
+Redim mlsUnidade(19)
+
+mlsUnidade(1) = "one ":
+mlsUnidade(2) = "two ":
+mlsUnidade(3) = "three ":
+mlsUnidade(4) = "four ":
+mlsUnidade(5) = "five ":
+mlsUnidade(6) = "six ":
+mlsUnidade(7) = "seven ":
+mlsUnidade(8) = "eight ":
+mlsUnidade(9) = "nine ":
+mlsUnidade(10) = "ten ":
+mlsUnidade(11) = "eleven ":
+mlsUnidade(12) = "twolve ":
+mlsUnidade(13) = "thirteen ":
+mlsUnidade(14) = "fourteen ":
+mlsUnidade(15) = "fifteen ":
+mlsUnidade(16) = "sixteen ":
+mlsUnidade(17) = "seventeen ":
+mlsUnidade(18) = "eighteen ":
+mlsUnidade(19) = "nineteen ":
+
+Dim mlsDezena() as String
+Redim mlsDezena(9)
+
+mlsDezena(1) = "ten ":
+mlsDezena(2) = "twenty ":
+mlsDezena(3) = "thirty ":
+mlsDezena(4) = "forty ":
+mlsDezena(5) = "fifty ":
+mlsDezena(6) = "sixty ":
+mlsDezena(7) = "seventy ":
+mlsDezena(8) = "eighty ":
+mlsDezena(9) = "ninety ":
+
+Dim mlsCentena() as String
+Redim mlsCentena(9)
+
+mlsCentena(1) = "hundred ":
+mlsCentena(2) = "two hundred ":
+mlsCentena(3) = "three hundred ":
+mlsCentena(4) = "four hundred ":
+mlsCentena(5) = "five hundred ":
+mlsCentena(6) = "six hundred ":
+mlsCentena(7) = "seven hundred ":
+mlsCentena(8) = "eight hundred ":
+mlsCentena(9) = "nine hundred ":
+
+
+'Separa valor em grupos
+vlsValor = ToText(Valor, "0000000000.00")
+alsGrupo(1) = Mid(vlsValor, 2, 3)
+alsGrupo(2) = Mid(vlsValor, 5, 3)
+alsGrupo(3) = Mid(vlsValor, 8, 3)
+alsGrupo(4) = "0" + Mid(vlsValor, 12,2)
+
+
+    'Calcula cada Grupo
+    For vliContador = 1 to 4
+        vlsParte = alsGrupo(vliContador)
+
+        If ToNumber(vlsParte) > 0 then
+        
+            vliTamanho  = Switch(val(vlsParte) < 10, 1, Val(vlsParte) < 100, 2, Val(vlsParte) < 1000, 3)
+
+            if vliTamanho = 3 then
+            
+                If Right(vlsParte, 2) <> "00" Then
+                    alsTexto(vliContador) = alsTexto(vliContador) + mlsCentena(ToNumber(Left(vlsParte, 1))) + "and "
+                    vliTamanho = 2
+                Else
+                    alsTexto(vliTamanho) = alsTexto(vliContador) + Iif(Left(vlsParte, 1) = "1", "hundred ", mlsCentena(ToNumber(Left(vlsParte, 1))))
+                End If
+
+            End if
+
+
+            If vliTamanho = 2 Then
+            
+                If Val(Right(vlsParte, 2)) < 20 then
+                    alsTexto(vliContador) = alsTexto(vliContador) + mlsUnidade(ToNumber(Right(vlsParte, 2)))
+                Else
+                    alsTexto(vliContador) = alsTexto(vliContador) + mlsDezena(ToNumber(Mid(vlsParte, 2,1)))
+
+                    If Right(vlsParte, 1) <> "0" then
+                        alsTexto(vliContador) = alsTexto(vliContador) + "and "
+                        vliTamanho = 1
+                    End IF
+
+                End If
+
+            End If
+
+
+            If vliTamanho = 1 Then
+                alsTexto(vliContador) = alsTexto(vliContador) + mlsUnidade(ToNumber(Right(vlsParte, 1)))
+            End IF
+          
+        
+        End If
+
+    Next
+
+    'Final
+    If Val(alsGrupo(1)+ alsGrupo(2) + alsGrupo(3) ) = 0 And Val(alsGrupo(4)) <> 0 Then
+        vlsFinal = alsTexto(4) + IIF (Val(alsGrupo(4)) = 1, "cent", "cents")
+    Else
+        vlsFinal = ""
+        vlsFinal = vlsfinal + IIF(Val(alsGrupo(1)) <> 0, alsTexto(1) + IIF(Val(alsGrupo(1)) > 1, "millions  ", "million "), "")
+
+       If Val(alsGrupo(2) + alsGrupo(3)) = 0 Then
+            vlsFinal = vlsFinal + "de "
+       Else
+            vlsFinal = vlsFinal + IIF(Val(alsGrupo(2)) <> 0 , alsTexto(2) + "thousand ", "")
+       End IF
+        
+        vlsFinal = vlsFinal + alsTexto(3)
+        vlsFinal = vlsFinal 
+    End if
+
+
+
+
+    ToWords2 = Ucase(Mid(vlsFinal, 1,1)) + LCase(Mid(vlsFinal, 2))
+
+
+End Function

@@ -11,4 +11,14 @@ type="sqltypes:datetime" type="xsd:dateTime"
 
 type="sqltypes:int" type="xsd:int"
 
-type="sqltypes:bit" type="xsd:boolean"
+type="sqltypes:bit" type="
+
+
+
+if({documento.moeda_id} = 2)then
+""
+else
+""
+
+
+ por tonelada. Incluso {3impostos}
